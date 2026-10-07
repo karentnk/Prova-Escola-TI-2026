@@ -1,0 +1,9 @@
+{
+  "slug": "Prova-Escola-TI-2026",
+  "EXAM_DIR": "exams/2026/track-01-especificacao-sdd",
+  "TARIFA_HORA_CENTAVOS": 400,
+  "FRACAO_MINUTOS": 15,
+  "TETO_DIARIO_CENTAVOS": 6000,
+  "PORTA_SERVICO": 8001,
+  "TOLERANCIA_MINUTOS": 15
+}
