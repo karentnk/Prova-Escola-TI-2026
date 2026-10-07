@@ -77,4 +77,11 @@ README.md          # como rodar local, rodar testes e rodar com Docker
 12. **Duas portas, um processo:** `app/main.py` sobe dois servidores Uvicorn
     (portas `8001` e `8080`, host `0.0.0.0`) no mesmo laço `asyncio`, usando a
     mesma instância da aplicação. Justificativa: o contrato cita a porta
-    interna `8080` e também `PORTA_SERVICO
+    interna `8080` e também `PORTA_SERVICO = 8001`; escutar nas duas atende
+    qualquer mapeamento da suíte, e o mesmo processo garante estado único.
+13. **Container:** `python:3.12-slim`, `pip install --no-cache-dir -r requirements.txt`,
+    usuário não-root, `EXPOSE 8001 8080` e `CMD ["python", "-m", "app.main"]`.
+    Justificativa: imagem pequena, sem privilégios desnecessários.
+14. **Relatório:** `total_bilhetes` conta bilhetes com `entrada` na data
+    (qualquer status); `faturamento_centavos` e `tempo_medio_minutos` usam só
+    bilhetes `encerrado` com `saida` na data, sempre no fuso `-03:00`.
