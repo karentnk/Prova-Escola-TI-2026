@@ -1,21 +1,8 @@
 # Plan — Arquitetura e decisões
 
-## Contrato que o plano precisa respeitar
-
-Base URL `http://localhost:8001`. Todo erro: `{"erro": "<codigo>"}`. Campos em
-português, minúsculos, com `_`.
-
-| UC | Método | Rota | Sucesso | Erros |
-| --- | --- | --- | --- | --- |
-| UC1 | `POST` | `/bilhetes` body `{"placa", "entrada"?}` | `201 {id, placa, entrada, status: "aberto"}` | `422 placa_invalida`, `422 entrada_invalida`, `409 bilhete_em_aberto` |
-| UC2 | `POST` | `/bilhetes/{id}/encerramento` body `{"saida"?}` | `200 {id, placa, entrada, saida, minutos, valor_centavos, status: "encerrado"}` | `404 bilhete_nao_encontrado`, `409 bilhete_ja_encerrado` |
-| UC3 | `GET` | `/bilhetes/ativos` | `200` array de abertos, mais recentes primeiro | — |
-| UC4 | `GET` | `/relatorios/diario?data=AAAA-MM-DD` | `200 {data, total_bilhetes, faturamento_centavos, tempo_medio_minutos}` | `422 data_invalida` |
-| UC5 | `POST` | `/bilhetes/{id}/cancelamento` | `200 {id, placa, entrada, status: "cancelado"}` | `404 bilhete_nao_encontrado`, `409 bilhete_nao_aberto` |
-| UC6 | `GET` | `/bilhetes?placa=` | `200` array da placa, qualquer status, mais recentes primeiro | `422 placa_invalida` |
-
-Variante: `TARIFA_HORA_CENTAVOS = 400`, `FRACAO_MINUTOS = 15`,
+Variante deste projeto: `TARIFA_HORA_CENTAVOS = 400`, `FRACAO_MINUTOS = 15`,
 `TETO_DIARIO_CENTAVOS = 6000`, `TOLERANCIA_MINUTOS = 15`, `PORTA_SERVICO = 8001`.
+Contrato completo (rotas, campos e erros) no `spec.md`.
 
 ## Stack
 
@@ -90,11 +77,4 @@ README.md          # como rodar local, rodar testes e rodar com Docker
 12. **Duas portas, um processo:** `app/main.py` sobe dois servidores Uvicorn
     (portas `8001` e `8080`, host `0.0.0.0`) no mesmo laço `asyncio`, usando a
     mesma instância da aplicação. Justificativa: o contrato cita a porta
-    interna `8080` e também `PORTA_SERVICO = 8001`; escutar nas duas atende
-    qualquer mapeamento da suíte, e o mesmo processo garante estado único.
-13. **Container:** `python:3.12-slim`, `pip install --no-cache-dir -r requirements.txt`,
-    usuário não-root, `EXPOSE 8001 8080` e `CMD ["python", "-m", "app.main"]`.
-    Justificativa: imagem pequena, sem privilégios desnecessários.
-14. **Relatório:** `total_bilhetes` conta bilhetes com `entrada` na data
-    (qualquer status); `faturamento_centavos` e `tempo_medio_minutos` usam só
-    bilhetes `encerrado` com `saida` na data, sempre no fuso `-03:00`.
+    interna `8080` e também `PORTA_SERVICO

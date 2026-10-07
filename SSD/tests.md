@@ -5,18 +5,7 @@ Cada item abaixo vira um teste automatizado (`def test_...`) em
 (funções puras). Os casos de borda são obrigatórios. Cada teste começa com o
 repositório em memória vazio.
 
-## Contrato sob teste
-
-Base URL `http://localhost:8001`. Erro sempre `{"erro": "<codigo>"}`.
-
-| UC | Rota | Sucesso | Erros |
-| --- | --- | --- | --- |
-| UC1 | `POST /bilhetes` body `{"placa", "entrada"?}` | `201 {id, placa, entrada, status: "aberto"}` | `422 placa_invalida`, `422 entrada_invalida`, `409 bilhete_em_aberto` |
-| UC2 | `POST /bilhetes/{id}/encerramento` body `{"saida"?}` | `200 {id, placa, entrada, saida, minutos, valor_centavos}` | `404 bilhete_nao_encontrado`, `409 bilhete_ja_encerrado` |
-| UC3 | `GET /bilhetes/ativos` | `200` array de abertos, mais recentes primeiro | — |
-| UC4 | `GET /relatorios/diario?data=AAAA-MM-DD` | `200 {data, total_bilhetes, faturamento_centavos, tempo_medio_minutos}` | `422 data_invalida` |
-| UC5 | `POST /bilhetes/{id}/cancelamento` | `200 {id, placa, entrada, status: "cancelado"}` | `404 bilhete_nao_encontrado`, `409 bilhete_nao_aberto` |
-| UC6 | `GET /bilhetes?placa=` | `200` array da placa, mais recentes primeiro | `422 placa_invalida` |
+## Premissas
 
 Variante: tarifa `400`/h, fração `15` min (`100` centavos), teto `6000`,
 tolerância `15` min, porta `8001`.
