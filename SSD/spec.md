@@ -1,8 +1,9 @@
 # Spec — Zona Azul Digital
 
-API REST de bilhetes de estacionamento rotativo: abrir e encerrar bilhetes por
-placa, cancelar, listar ativos, consultar histórico por placa e emitir
-relatório diário. Somente a API é escopo (não há back-office).
+A operadora de estacionamento rotativo precisa de uma API para controlar os
+bilhetes por placa: abrir, encerrar com cobrança, cancelar, ver quem está
+estacionado agora, ver o histórico de uma placa e tirar um relatório do dia.
+Só a API faz parte do escopo; não existe back-office.
 
 ## Contrato resumido
 
