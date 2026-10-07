@@ -38,7 +38,7 @@ conta. Se nenhum site foi consultado, escreva: **"Nenhum site consultado."**)*
 
 | # | Link público da conversa | Onde o conteúdo foi usado |
 | --- | --- | --- |
-| — | | |
+| — |https://claude.ai/share/566723d8-d2ae-4264-aec2-94530d02cdc5 |Auxilio das estruturas e desenvolvimento |
 
 *(Se nenhuma IA foi utilizada, escreva: **"Nenhuma IA utilizada."**)*
 
