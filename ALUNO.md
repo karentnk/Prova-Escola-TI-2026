@@ -4,7 +4,7 @@
 
 Nome: Karen Tanaka
 
-RA: >>> PREENCHER <<<
+RA: 23026540-2
 
 Conta GitHub: @karentnk
 
