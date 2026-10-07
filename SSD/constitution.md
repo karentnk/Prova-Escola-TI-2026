@@ -1,7 +1,9 @@
 # Constitution — Zona Azul Digital
 
-Este arquivo deve bastar sozinho: rotas, nomes de campos (minúsculos, com `_`),
-status codes e regras numéricas abaixo são exatos e obrigatórios.
+Leia todos os `.md` antes de gerar código (`constitution.md` → `spec.md` →
+`plan.md` → `tests.md` → `tasks.md`). Rotas, campos (minúsculos, com `_`),
+status codes e regras numéricas abaixo são exatos e obrigatórios. Em conflito
+entre arquivos, este prevalece.
 
 ## 1. Contrato resumido (vale para todo o projeto)
 
@@ -13,7 +15,7 @@ status codes e regras numéricas abaixo são exatos e obrigatórios.
 | UC4 | `GET` | `/relatorios/diario?data=AAAA-MM-DD` | `200` `{data, total_bilhetes, faturamento_centavos, tempo_medio_minutos}` | `422 data_invalida` |
 | UC5 | `POST` | `/bilhetes/{id}/cancelamento` | `200` bilhete com `status: "cancelado"` | `404 bilhete_nao_encontrado`, `409 bilhete_nao_aberto` |
 | UC6 | `GET` | `/bilhetes?placa=ABC1D23` | `200` array de todos os bilhetes da placa, mais recentes primeiro (vazio se nenhum) | `422 placa_invalida` |
-| UC7 | regra | tolerância gratuita | duração ≤ 15 min → `valor_centavos: 0` | — |
+| UC7 | regra | tolerância gratuita | duração ≤ 15 min → `valor_centavos: 0`; 16 min ou mais → cobra integral desde o minuto 0 (16 min = `200`) | — |
 | UC8 | regra | uma vaga por placa | — | `409 bilhete_em_aberto` |
 
 Todo erro tem corpo JSON exatamente `{"erro": "<codigo>"}`.
@@ -72,7 +74,7 @@ nome, mas **nenhuma variável de ambiente é obrigatória**.
 | --- | --- |
 | `Dockerfile` | Base `python:3.12-slim`, instala dependências, `EXPOSE 8001 8080` e `CMD` que sobe a API |
 | `Containerfile` | Conteúdo idêntico ao `Dockerfile` |
-| `requirements.txt` | Todas as dependências com versão fixada (inclui `pytest` e `httpx`) |
+| `requirements.txt` | Todas as dependências com versão fixada (inclui `pytest`, `httpx` e `ruff`) |
 | `README.md` | Como rodar localmente, como rodar os testes e como rodar com Docker (`docker build` e `docker run -p 8001:8001`) |
 | `tests/` | Testes automatizados próprios cobrindo todos os cenários do `tests.md` (mínimo de 25 funções `def test_`) |
 | `.gitignore` e `.dockerignore` | Ignoram `__pycache__/`, `.venv/`, `.pytest_cache/` e arquivos `.env` |
