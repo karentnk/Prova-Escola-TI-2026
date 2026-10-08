@@ -1,0 +1,54 @@
+{
+  "schema": 1,
+  "repo": "Prova-Escola-TI-2026",
+  "repo_url": "https://github.com/karentnk/Prova-Escola-TI-2026",
+  "exam_dir": "exams/2026/track-01-especificacao-sdd",
+  "track": "track-01-especificacao-sdd",
+  "issue": 1,
+  "issue_url": "https://github.com/karentnk/Prova-Escola-TI-2026/issues/1",
+  "gerado_em": "2026-10-08T00:04:07+00:00",
+  "fechada_em": "2026-10-08T00:03:34Z",
+  "aplicada": true,
+  "motivo": null,
+  "aluno": {
+    "login": "karentnk",
+    "ra": "230265402",
+    "nome": "Karen Tanaka"
+  },
+  "variante": {
+    "slug": "Prova-Escola-TI-2026",
+    "EXAM_DIR": "exams/2026/track-01-especificacao-sdd",
+    "TARIFA_HORA_CENTAVOS": 400,
+    "FRACAO_MINUTOS": 15,
+    "TETO_DIARIO_CENTAVOS": 6000,
+    "PORTA_SERVICO": 8001,
+    "TOLERANCIA_MINUTOS": 15
+  },
+  "janela": {
+    "minutos": 120,
+    "t0": "2026-10-07T22:10:23Z",
+    "ultimo_push": "2026-10-07T20:59:21-03:00"
+  },
+  "commits": {
+    "total": 16,
+    "autores": [
+      "Karen Tanaka"
+    ],
+    "primeiro": "2026-10-07T19:05:50-03:00",
+    "ultimo": "2026-10-07T20:59:21-03:00",
+    "fora_da_janela": 0
+  },
+  "nota_parcial": {
+    "valor": null,
+    "criterios": {}
+  },
+  "auto_correcao": {
+    "executada": true,
+    "nota_ultima": 15
+  },
+  "fontes": {
+    "presente": true,
+    "declarou_vazio": false,
+    "links": 0
+  }
+}
